@@ -6,6 +6,7 @@ Repository for generating and evolving the final Policier agent swarm.
 ```text
 policier_example/
 ├─ README.md
+├─ AGILE/
 ├─ PLANS/
 ├─ app/
 ├─ tests/
@@ -17,6 +18,8 @@ policier_example/
 - `PLANS/`: canonical planning and policy source docs.
   - `PLANS/policier/`: architecture/component plans.
   - `PLANS/testing/`: normative policy anchors (`test_policy`, `ai_code_safety_policy`, `nonfunctional_policy`).
+- `AGILE/`: Agile operating model and implementation planning artifacts for agent-driven delivery.
+  - `AGILE/IMPL/`: epic/story/sprint planning workspace.
 - `app/`: implementation area for generated swarm code.
   - `app/templates/agent/policier/`: experimental reference templates (API, Postgres SQL, pipeline code).
 - `tests/`: executable test suites and harness code as they are implemented.
