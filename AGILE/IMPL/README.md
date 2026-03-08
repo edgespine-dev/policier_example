@@ -16,3 +16,6 @@ This folder is where agents place concrete implementation planning artifacts.
 - `EPIC_BACKLOG.md`
 - `SPRINT_PLAN.md`
 - `STORY_SLICE_TEMPLATE.md`
+- `STORY_SPEC_QUEUE.md`
+- `HANDOFF_LOG.md`
+- `AGENT_COMMUNICATION_PROTOCOL.md`

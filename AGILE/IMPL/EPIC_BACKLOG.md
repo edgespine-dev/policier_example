@@ -1,5 +1,11 @@
 # EPIC Backlog
 
+## Current state
+- Epic scope is defined.
+- Concrete story files are not instantiated yet.
+- Create story files from `STORY_SLICE_TEMPLATE.md` before any implementation starts.
+- Agent I implementation is blocked until each story reaches `tests_audited` with `approved` compliance verdict.
+
 ## EPIC-01 Source and document ingestion
 - Scope anchor: `PLANS/policier/file_selection_ingest.md`, `PLANS/policier/config_catalog.md`
 - Candidate stories:

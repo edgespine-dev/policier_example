@@ -3,11 +3,13 @@
 ## Cadence
 - Recommended sprint length: 1 week
 - End of sprint gate: integration gate summary is mandatory
+- Orchestrator checkpoint cadence: daily sequencing + unblock/block decisions
 
 ## Sprint 0 - Planning lock
 - lock epic IDs and story IDs
 - lock gate definitions and pass/fail criteria
 - create initial story files from template
+- create initial task packets and assign Agent O/T/V/I owners
 
 ## Sprint 1 - Data foundation
 - EPIC-06 Persistence and invalidation
@@ -41,3 +43,4 @@
 - Exit gate:
   - endpoint/component/system suites green
   - unresolved blocker defects = 0
+  - handoff log complete for all stories delivered in sprint

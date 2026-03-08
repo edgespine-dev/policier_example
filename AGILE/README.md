@@ -16,10 +16,12 @@ This folder defines how agent-driven implementation stays trackable in a familia
    - implementation
    - integration gate
 3. Agents write implementation planning artifacts under `AGILE/IMPL/`.
+4. Implementation is blocked until a test-auditor has approved story compliance against skills/policies.
 
 ## Folder map
 - `AGENT_DELIVERY_PLAN.md`: operating model for multiple agents.
 - `IMPL/EPIC_BACKLOG.md`: epic inventory and story seeds.
 - `IMPL/SPRINT_PLAN.md`: sprint breakdown and gates.
 - `IMPL/STORY_SLICE_TEMPLATE.md`: template for per-story planning.
+- `IMPL/STORY_SPEC_QUEUE.md`: readiness queue for story instantiation and unblock flow.
 - `IMPL/README.md`: file naming and update rules.
