@@ -50,10 +50,12 @@ Every story should use these slices:
 
 ## Compliance gates before implementation
 Agent V must explicitly verify each story against:
+- `PLANS/policier/*` scope anchors and component intent
 - `agent-backbone` skill expectations relevant to the epic
 - `PLANS/testing/test_policy.md` (correctness)
 - `PLANS/testing/ai_code_safety_policy.md` (execution safety)
 - `PLANS/testing/nonfunctional_policy.md` (operational readiness)
+- `AGILE/*` process rules (slice order, handoff protocol, status flow)
 
 Implementation unblock condition:
 - status must be `tests_audited`

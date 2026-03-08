@@ -1,33 +1,35 @@
-# Story Slice Template
+# STORY-01-01 Selection/Ingest Contract Lock
 
 ## Header
-- Story ID:
-- Epic:
-- Orchestrator / Team Lead (Agent O):
-- Test Author (Agent T):
-- Test Auditor (Agent V):
-- Implementer (Agent I):
-- Sprint:
-- Status: `draft | spec_locked | tests_written | tests_audited | implementation_unblocked | in_progress | blocked | done`
+- Story ID: STORY-01-01
+- Epic: EPIC-01
+- Orchestrator / Team Lead (Agent O): Agent-O
+- Test Author (Agent T): Agent-T
+- Test Auditor (Agent V): Agent-V
+- Implementer (Agent I): Agent-I
+- Sprint: Sprint 1
+- Status: spec_locked
 
 ## Story goal
-- one-sentence outcome
+- Lock request/response contracts for file selection and document ingest create/read/ensure.
 
 ## Scope anchor
-- linked plan docs (paths)
+- `PLANS/policier/file_selection_ingest.md`
+- `PLANS/policier/config_catalog.md`
+- `PLANS/testing/test_policy.md`
 
 ## Task packet (context-minimized)
-- included docs:
-- included policy refs:
-- included contract/fixture refs:
-- explicitly excluded context:
+- included docs: `file_selection_ingest.md`, `config_catalog.md`
+- included policy refs: `test_policy.md`, `ai_code_safety_policy.md`, `nonfunctional_policy.md`
+- included contract/fixture refs: `contracts/selection/*`, `contracts/documents/*`
+- explicitly excluded context: unrelated epic plan files
 
 ## Definition of ready checklist
-- [ ] scope/objective is specific and testable
-- [ ] contract lock slice is described
+- [x] scope/objective is specific and testable
+- [x] contract lock slice is described
 - [ ] fixture plan is described
 - [ ] deterministic test matrix is described
-- [ ] integration dependencies are listed
+- [x] integration dependencies are listed
 
 ## Slice checklist
 - [ ] Contract lock
@@ -47,13 +49,11 @@
   - gate result logged
 
 ## Skills and policy compliance (Agent V)
-- [ ] scope matches `PLANS/policier/*` canonical component intent
 - [ ] relevant `agent-backbone` skills are referenced
 - [ ] `PLANS/testing/test_policy.md` checks satisfied
 - [ ] `PLANS/testing/ai_code_safety_policy.md` checks satisfied
 - [ ] `PLANS/testing/nonfunctional_policy.md` checks satisfied
-- [ ] `AGILE/*` process constraints satisfied (slice order + handoff + status flow)
-- Compliance verdict: `approved | rejected`
+- Compliance verdict: approved | rejected
 - Auditor notes:
 
 ## Test feedback to implementer (when rejected)
@@ -63,13 +63,13 @@
 - acceptance condition for re-audit:
 
 ## Implementation unblock
-- Unblock status: `granted | denied`
-- Blocking reasons (if denied):
+- Unblock status: denied
+- Blocking reasons (if denied): test slices not completed
 - Evidence links:
 - Unblocked by (Agent O):
 
 ## Gate result
-- Gate status: `pass | fail`
+- Gate status: fail
 - Evidence:
 - Remaining risks:
 
@@ -82,5 +82,5 @@
 - result summary:
 
 ## Notes
-- dependencies
-- follow-up stories
+- dependencies: STORY-06-01 migration/validity contract lock
+- follow-up stories: STORY-01-02
