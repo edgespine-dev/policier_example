@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "prompt_templates": {
+    "start": "You are a meticulous policy extractor.\nGoal: extract EVERYTHING related to topic '$topic' with no information loss.\nTitle: $title\nScope: $scope\nKeywords: $keywords\n\nInstructions:\n- Work only from the source text.\n- Include explicit requirements, steps, scripts/commands, files, and verification criteria.\n- Add short evidence snippets per point.\n- If something is unclear: mark it as uncertain, do not guess.\n\nSource text:\n$source_text\n\nReturn JSON according to schema:\n$output_schema",
+    "verify": "You are a strict verifier.\nCheck whether the candidate answer fully covers topic '$topic' (scope: $scope).\nKeywords to watch: $keywords\n\nSource text:\n$source_text\n\nCandidate:\n$candidate_answer\n\nReturn JSON:\n{\n  \"status\": \"COMPLETE|INCOMPLETE\",\n  \"missing_items\": [\"...\"],\n  \"incorrect_items\": [\"...\"],\n  \"notes\": \"short rationale\"\n}\n\nRules:\n- Mark INCOMPLETE if any relevant detail is missing.\n- Prioritize high recall over brevity.\n- Return only verification results, no new extraction.",
+    "variables": {
+      "source_text": "Source material to analyze or verify.",
+      "output_schema": "JSON schema for extractor output.",
+      "candidate_answer": "Current extractor answer to review."
+    }
+  },
+  "topics": [
+    {
+      "id": 1,
+      "title": "Secrets bootstrap & DR",
+      "topic": "secrets_bootstrap_dr",
+      "scope": "first bring-up, init/unseal, what must be saved outside the cluster, DR flows.",
+      "keywords": ["bootstrap", "DR", "unseal", "openbao-init.json", "restore", "bao status"]
+    },
+    {
+      "id": 2,
+      "title": "SOPS + age key management",
+      "topic": "sops_age_key_management",
+      "scope": "age key setup, .sops.yaml, key management, re-encryption, never share private key.",
+      "keywords": ["SOPS", "age", "keys.txt", ".sops.yaml", "SOPS_AGE_KEY_FILE"]
+    },
+    {
+      "id": 3,
+      "title": "UNS mapping for secrets",
+      "topic": "uns_secrets_identity_contract",
+      "scope": "Secret Identity = App Identity, mapping Git path to OpenBao KV to YAML leaf.",
+      "keywords": ["UNS", "Secret Identity", "apps/", "kv/<overlay>/", "passwd-<overlay>"]
+    },
+    {
+      "id": 4,
+      "title": "Credentials bundles lifecycle",
+      "topic": "credential_bundles_lifecycle",
+      "scope": "unlock/edit/lock/push/pull, idempotency, --force, plaintext gitignored.",
+      "keywords": ["bao_unlock_creds.sh", "bao_lock_creds.sh", "bao_push_creds.sh", "bao_pull_creds.sh", "passwd-*.yaml.sops"]
+    },
+    {
+      "id": 5,
+      "title": "Workload credential injection (Vault/Agent Injector)",
+      "topic": "workload_creds_injection",
+      "scope": "kustomize components/overlays, injector annotations, template lines, debug hold patch.",
+      "keywords": ["agent-inject", "patch_creds", "components/credentials", "patch_creds_path", "vault.hashicorp.com/"]
+    },
+    {
+      "id": 6,
+      "title": "OpenBao baseline & kube-auth",
+      "topic": "openbao_baseline_kube_auth",
+      "scope": "KV v2 mount, auth/kubernetes, baseline scripts/DoD, strict overlay layout.",
+      "keywords": ["167_openbao_baseline", "KV v2", "auth/kubernetes", "bao auth list", "bao secrets list"]
+    },
+    {
+      "id": 7,
+      "title": "Workload TLS (SPIRE 0.1)",
+      "topic": "workload_tls_spire01",
+      "scope": "trust domain, SVID/SPIFFE SAN, cert generation, KV TLS layout, rotation.",
+      "keywords": ["SPIRE 0.1", "SPIFFE", "SVID", "create_root_ca.sh", "create_cert.sh", "generate_workload_certs.sh"]
+    },
+    {
+      "id": 8,
+      "title": "Security-bundle generation & generated artifacts rule",
+      "topic": "security_bundle_generated_manifests",
+      "scope": "ExternalSecrets manifests that materialize TLS Secrets, do not hand-edit, regeneration workflow.",
+      "keywords": ["security-bundle", "ExternalSecret", "generated", "do not hand-edit", "create_workload_security_bundle.sh"]
+    },
+    {
+      "id": 9,
+      "title": "GitOps architecture & repo layout",
+      "topic": "gitops_repo_architecture",
+      "scope": "layers (sys/infra/auth/web), AppProjects, ApplicationSets, generation script, overlays.",
+      "keywords": ["Argo CD", "ApplicationSet", "AppProject", "apps/sys", "apps/infra", "bootstrap/130_apply_proj_app.sh"]
+    },
+    {
+      "id": 10,
+      "title": "Project placement policy",
+      "topic": "project_placement_rules",
+      "scope": "what belongs in sys/infra/auth/web, split pattern, public surface vs shared runtime.",
+      "keywords": ["PROJECT_PLACEMENT", "apps/web", "apps/infra", "apps/auth", "apps/sys"]
+    },
+    {
+      "id": 11,
+      "title": "Overlay app limiting",
+      "topic": "overlay_app_limiting",
+      "scope": "dev-bringup allow-list, patch pattern, verify kustomize output.",
+      "keywords": ["OVERLAY_APP_LIMITING", "dev-bringup", "patch-disable-apps.yaml", "spec.generators"]
+    },
+    {
+      "id": 12,
+      "title": "Storage policy",
+      "topic": "storage_policy",
+      "scope": "PVC naming/labels, deterministic mount paths, hostPath rules, S3 key conventions.",
+      "keywords": ["STORAGE_POLICY", "local-path", "PVC", "hostPath", "edgespine/<env>/..."]
+    },
+    {
+      "id": 13,
+      "title": "Ingress/TLS/BasicAuth baseline for deployments",
+      "topic": "deploy_ingress_baseline",
+      "scope": "single entry point prompt, required deliverables, verification gate, Bao/ExternalSecret, hardening.",
+      "keywords": ["GITPILOT_DEPLOY_INGRESS", "BasicAuth", "Traefik", "ClusterIssuer", "verification gate"]
+    },
+    {
+      "id": 14,
+      "title": "Agent Hub stack (n8n + postgres + ollama)",
+      "topic": "agent_hub_stack",
+      "scope": "internal Ollama service, n8n public ingress with BasicAuth, model management (pull/list).",
+      "keywords": ["Agent Hub", "n8n", "ollama", "postgres", "ollama:11434", "kubectl exec ... ollama"]
+    },
+    {
+      "id": 15,
+      "title": "Observability: OTel sink mTLS + Traefik passthrough",
+      "topic": "otel_sink_mtls_passthrough",
+      "scope": "IngressRouteTCP passthrough, mTLS in collector, secret contract otel-sink-certs.",
+      "keywords": ["OpenTelemetry", "OTLP gRPC", "IngressRouteTCP", "passthrough", "require_and_verify_client_cert"]
+    },
+    {
+      "id": 16,
+      "title": "ArgoCD access & GitHub token workflow",
+      "topic": "argocd_access_and_repo_auth",
+      "scope": "initial admin secret, port-forward, fine-grained token via HTTPS, rotation.",
+      "keywords": ["argocd-initial-admin-secret", "Settings -> Repositories", "github_pat_", "repoURL: https"]
+    },
+    {
+      "id": 17,
+      "title": "Security remediation program (CS tracker)",
+      "topic": "security_remediation_tracker",
+      "scope": "items/verify/remediate prompts, pin images, remove defaults, hardening, AppProject scope.",
+      "keywords": ["Remediate", "Verify", "ITEM-", "pin images", "default credentials", "hostNetwork", "clusterResourceWhitelist"]
+    },
+    {
+      "id": 18,
+      "title": "Tests: MQTT mTLS, Influx mTLS",
+      "topic": "integration_tests_mtls",
+      "scope": "extract TLS secret, publish/subscribe, write/query influx points.",
+      "keywords": ["tests/mqtt", "tests/influx", "extract_tls_secret.sh", "8883", "8086"]
+    },
+    {
+      "id": 19,
+      "title": "Developer onboarding / access patterns",
+      "topic": "developer_onboarding",
+      "scope": "user creation, ssh keys, kubeconfig, tmux workflow, basic getting productive.",
+      "keywords": ["adduser", "authorized_keys", "k3s.yaml", "tmux", "kubectl get nodes"]
+    }
+  ]
+}
