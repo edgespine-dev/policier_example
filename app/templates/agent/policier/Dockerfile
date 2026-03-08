@@ -2,10 +2,12 @@ FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
 WORKDIR /srv/policier
 
-COPY agent/policier/pyproject.toml ./
+# Build from repo root:
+# docker build -f app/templates/agent/policier/Dockerfile -t policier:latest .
+COPY app/templates/agent/policier/pyproject.toml ./
 RUN uv sync --no-dev
 
-COPY agent/policier/ ./
+COPY app/templates/agent/policier/ ./
 
 # Mount your repo to /workspace when running the container.
 ENV POLICY_BASE_DIR=/workspace

@@ -35,7 +35,7 @@ Use this JSON shape for any agent-to-agent handoff payload:
     "verify nonfunctional checks are represented"
   ],
   "references": [
-    "AGILE/IMPL/STORY-03-01-policy-contract.md",
+    "AGILE/DELIVERY/STORIES/STORY-03-01-policy-contract-and-lineage.md",
     "tests/io/prompts/create.expected.json"
   ],
   "created_at": "YYYY-MM-DDTHH:MM:SSZ"

@@ -1,0 +1,23 @@
+{
+  "excludeContains": [
+    "thrash/",
+    "test",
+    "node_modules/",
+    ".git/"
+  ],
+  "excludeGlobs": [
+    "**DEV_PLAN**",
+    "**REMEDIATION**"
+  ],
+  "excludeFileNames": [
+    "DeveloperOnboarding_README.md",
+    "SECURITY_REMEDIATION.md",
+    "merged.md",
+    "GITPILOT_DEPLOY_INGRESS.md",
+    "010_macos_multipass.md",
+    "125_argocd_access.md",
+    "126_argo_github_access.md",
+    "copilot-instructions.md"
+  ],
+  "excludeExtensions": []
+}

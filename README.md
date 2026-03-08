@@ -19,9 +19,10 @@ policier_example/
   - `PLANS/policier/`: architecture/component plans.
   - `PLANS/testing/`: normative policy anchors (`test_policy`, `ai_code_safety_policy`, `nonfunctional_policy`).
 - `AGILE/`: Agile operating model and implementation planning artifacts for agent-driven delivery.
-  - `AGILE/IMPL/`: epic/story/sprint planning workspace.
+  - `AGILE/DELIVERY/`: traceable execution workspace (stories, handoffs, gates, activity logs, evidence).
 - `app/`: implementation area for generated swarm code.
   - `app/templates/agent/policier/`: experimental reference templates (API, Postgres SQL, pipeline code).
+- `.agent/merge_policy_exclude.json`: shared policy merge exclusion config used by Policier source collection.
 - `tests/`: executable test suites and harness code as they are implemented.
 - `contracts/`: API/artifact contracts and validation fixtures.
 - `docs/`: human-oriented docs and prompt seeds.

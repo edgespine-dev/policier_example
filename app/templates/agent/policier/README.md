@@ -12,11 +12,11 @@ This service is deployed in Kubernetes under the `agents` project:
 ## How it works in cluster
 
 The app code is mounted from the repo path:
-- host: `/home/esadmin/bakerlabs-k8s/agent/policier`
+- host: `/home/esadmin/policier_example/app/templates/agent/policier`
 - container: `/app` (read-only)
 
 The repository root is mounted read-only for scanning:
-- host: `/home/esadmin/bakerlabs-k8s`
+- host: `/home/esadmin/policier_example`
 - container: `/workspace`
 - `POLICY_BASE_DIR=/workspace`
 
@@ -24,7 +24,7 @@ Because code is mounted from host, you only need a rollout restart after code up
 
 ## Update flow (no Makefile needed)
 
-After editing and pushing `agent/policier/*`:
+After editing and pushing `app/templates/agent/policier/*`:
 
 ```bash
 kubectl -n argocd annotate application agents-policier argocd.argoproj.io/refresh=hard --overwrite
@@ -39,8 +39,8 @@ kubectl -n agents-policier rollout status deploy/policier --timeout=300s
 - `GET /human_policies?base_dir=/workspace`
 - `GET /policy_files`
 - `GET /policy_files?base_dir=/workspace`
-- `GET /policy_files/exclusions`
-- `GET /policy_files/exclusions?base_dir=/workspace`
+- `GET /policy_files/excluded`
+- `GET /policy_files/excluded?base_dir=/workspace`
 - `GET /topics`
 - `GET /topics?prompts=true`
 - `GET /models`
@@ -113,12 +113,12 @@ Compact low-context pipeline (cache-first, file-by-file):
 ## SQL migrations
 
 SQL scripts are stored in:
-- `agent/policier/sql/001_init_policy_explain.sql`
-- `agent/policier/sql/002_add_source_blob_and_rules.sql`
+- `app/templates/agent/policier/sql/001_init_policy_explain.sql`
+- `app/templates/agent/policier/sql/002_add_source_blob_and_rules.sql`
 
 ## Ollama client from Policier
 
-Use the local helper class in `agent/policier/ollama_client.py`:
+Use the local helper class in `app/templates/agent/policier/ollama_client.py`:
 
 ```python
 from ollama_client import Ollama
@@ -153,6 +153,6 @@ PY
 If you still want to run it locally outside cluster, use `uv`:
 
 ```bash
-cd agent/policier
+cd app/templates/agent/policier
 uv run --no-project --with fastapi --with uvicorn uvicorn api:app --host 0.0.0.0 --port 8000
 ```

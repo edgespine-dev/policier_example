@@ -7,7 +7,7 @@ Turn the current Policier planning baseline into executable Agile delivery that 
 - `PLANS/policier/*`
 - `PLANS/testing/*`
 - `docs/APP_DB_POLICY.md`
-- `AGILE/IMPL/AGENT_COMMUNICATION_PROTOCOL.md`
+- `AGILE/DELIVERY/PROTOCOL/AGENT_COMMUNICATION_PROTOCOL.md`
 
 ## Roles for a test-first multi-agent setup
 - Agent O (Orchestrator / Team Lead): sequencing, context packaging, integration gating, and final go/no-go decisions.
@@ -60,7 +60,7 @@ Agent V must explicitly verify each story against:
 Implementation unblock condition:
 - status must be `tests_audited`
 - compliance verdict must be `approved`
-- gate evidence must be linked in the story file under `AGILE/IMPL/`
+- gate evidence must be linked in the story file under `AGILE/DELIVERY/STORIES/`
 - Agent O must confirm dependency order and set `implementation_unblocked`.
 
 ## Orchestrated workflow (single story)
@@ -72,7 +72,7 @@ Implementation unblock condition:
 6. Agent O + Agent V run integration gate and decide `done` or `blocked`.
 
 ## Agent communication model
-- Communication protocol is defined in `AGILE/IMPL/AGENT_COMMUNICATION_PROTOCOL.md`.
+- Communication protocol is defined in `AGILE/DELIVERY/PROTOCOL/AGENT_COMMUNICATION_PROTOCOL.md`.
 - Agent O enforces protocol use and rejects undocumented handoffs.
 - Transport can be Redis (or similar), but durable truth remains story files + handoff log.
 
@@ -110,13 +110,21 @@ Sprint 5: Hardening and readiness
 - end-to-end stabilization across all epics
 
 ## Required tracking artifacts
-Agents must keep these up to date in `AGILE/IMPL/`:
+Agents must keep these up to date in `AGILE/DELIVERY/`:
 - epic backlog status
 - story spec queue and readiness state
 - story-level slice checklists
 - sprint scope and sprint close outcome
 - gate result log (pass/fail + reason)
 - handoff log between agents (who handed off, what changed, which gates ran)
+ 
+Storage map for traceability:
+- backlog: `AGILE/DELIVERY/BACKLOG/`
+- stories and story state: `AGILE/DELIVERY/STORIES/`
+- handoffs: `AGILE/DELIVERY/HANDOFFS/`
+- gate decisions: `AGILE/DELIVERY/GATES/`
+- chronological activity: `AGILE/DELIVERY/ACTIVITY/`
+- test/command/report artifacts: `AGILE/DELIVERY/EVIDENCE/`
 
 ## Story readiness before broad testing
 Every story/slice must be fully specified before broad testing starts:
